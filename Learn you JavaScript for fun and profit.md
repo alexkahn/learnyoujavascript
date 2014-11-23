@@ -2,7 +2,7 @@
 JavaScript is an implementation of ECMAScript, a standardized browser scripting language that powers all aspects of the WWW. What exactly does JavaScript do? It adds behavior to web pages, it allows you to do things asyncronously, it allows you to store things on the client, in short: JavaScript allows you to program the web.
 
 What are all these JavaScript buzz words?
-- Node: a stand-alone (no browser) JavaScript interpreter (things that runs your code) built out of Chrome. It's wicked fast and built to do things asyncronously.
+- Node: a stand-alone (no browser) JavaScript interpreter (thing that runs your code) built out of Chrome. It's wicked fast and built to do things asyncronously.
 
 - jQuery: jQuery is a library (a bunch of files with code in them like yours) that turns ugly, annoying JavaScript into nice, elegant JavaScript.
 ```
@@ -26,7 +26,7 @@ write into fewer piles.
 - Mouses are BAD
 
 ## Data
-Here we want to start off with things that describe data. The world is all information and we can represent it in many ways but some ways are more sensible then others **but** HFC. To go a bit more in depth (use fancy words for ideas) we have two main types: Primative and Reference. Primative to type is atom to molecule. These are the simplest building blocks of the ways to translate real world things into code. Reference is a little more complicated. References are ways to "point" to something: not making a copy of it for yourself. To understand what we mean, let's look at some code.
+Here we want to start off with things that describe data. The world is all information and we can represent it in many ways but some ways are more sensible then others **but** HFC. To go a bit more in depth (use fancy words for ideas) we have two main types: Primative and Reference. Primative is to type as atom is to molecule. These are the simplest building blocks of the ways to translate real world things into code. Reference is a little more complicated. References are ways to "point" to something: not making a copy of it for yourself. To understand what we mean, let's look at some code.
 ```
 var myFavoriteNumber = 42;
 ```
@@ -91,7 +91,7 @@ As you can see, there is pretty much anything we can shove between some quotes a
 'She said and I quote "This is literally amazing"';
 ```
 
-The trick here is that we can't have an odd number of quotes that are supposed to surround our string. If we don't surround the string with one and only one type of quote character we will be told there is an error in our code by the all powerful interpreter: teller of your wrong. We did, however, illustrate the way you can still use them in a combination with each other as long as you are careful. There are some situation where we will need to get a bit fancier.
+The trick here is that we can't have an odd number of quotes that are supposed to surround our string. If we don't surround the string with one and only one type of quote character we will be told there is an error in our code by the all powerful interpreter: teller of your wrong. We did, however, illustrate the way you can still use them in a combination with each other as long as you are careful. There are some situations where we will need to get a bit fancier.
 
 ```
 // Challenge: Make a sentence into a string
@@ -111,25 +111,72 @@ There are some really fancy words for things like ```+```, ```=```, ```<=```, an
 There!
 ```
 
-Here, the plus sign means to take two numbers and make them into one number. It is a __binary__ operator because it operates on two things at once. There are unary operators like the ```typeof``` operator that operates on one thing and tells you what type it is (like string or number). The most often used binary operator is by far the assignment operator, our old pal ```=```.
+Here, the plus sign means to take two numbers and make them into one number. It is a __binary__ operator because it operates on two things at once. There are unary operators like the ```typeof``` operator that operates on one thing and tells you what type it is (like string or number). The most often used binary operator is by far the assignment operator, our old pal ```=```. In math, ```=``` means 'is equal or equivalent,' it is a relation between things like numbers and sets.
+
+In computer science and programming we often use the equal symbol to represent assignments and it means "hey, put the thing on the left hand side into the thing on the right hand side."
+
+The take away here is that we will not use ```=``` for comparing variables or collections of variables.
 
 **End Aside**
 
-- '' vs ""
-- Methods and Operators for Strings
+Life wouldn't be complete without methods (functions) on strings that tell us more about them.
+
+The first thing we'll do is as a string how many characters it has.
+
+```
+"my first string".length
+"myfirststring".length
+```
+
+I kind of lied, ```length``` isn't a method, technically it's a property which means no parenthesis when we ask for it. We could go through all the string methods one by one but that would certainly deserve a large amount of typing and someone (actually, a lot of people) have done this for us but I will show you how to use them.
+
+```
+// Using a method, this one's for strings.
+var sparseString = '    I'm data surrounded by spaces!       ';
+var result = sparseString.trim();
+console.log(result)
+
+// the same thing with less typing.
+var sparseString = '    I'm data surrounded by spaces!       ';
+console.log(sparseString.trim());
+
+// one more
+console.log('    I'm data surrounded by spaces!       '.trim());
+```
+
+To learn more string methods, check out the very well done [String reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) made my the Mozilla Developers Network.
 
 ### Numbers
-- NaN
+
+We've seen numbers assigned to variables already but we haven't discussed what kinds of numbers we can make. First let's take a second to review some of the common types of numbers:
+* Natural numbers [1, 2, 3, 4, 5]
+* Integers [... -3, -2, -1, 0, 1, 2, 3]
+* Rational Numbers (they can be represented by dividing one integer by another so long as the denominator isn't zero)
+* Real Numbers (The rationals plus all the numbers that can't be represented by fractions like the square root of two or pi)
+* Complex numbers (the reals plus the imaginary numbers - here for completeness, not because we'll use them)
+
+To JavaScript, there are only two real (see what I did there?) types of numbers: integers and floats. Integers are exactly like I mentioned above: whole numbers that are or positive negative but floats are a little but different. A float is an approximation to a number that doesn't always work out the way you expect.
+
+```
+1.2347 - 1.2344 // should be: 0.0003
+// > 0.00029999999999996696
+```
+
+Thus we have illustrated the struggle of programming with math happening. Luckily, many of these problems are well documented but it is worth noting that not every number is computable, in fact a great deal of them are not. It has been shown (proved mathematically) that not all real numbers are computable by machines (they can't be represented internally) so that's just something to keep in mind. There are plenty of resources out there for doing math with JavaScript (like the Math javascript library) 
+
+
 - Integers
 - Floats
+- NaN
+
+### Boolean
+### Undefined
+### Null
 
 ### Arrays
 - Ordered list of arbitrary data
 ### Objects
-### Boolean
 ### Dates
-### Undefined
-### Null
 
 typeof
 instanceof
