@@ -7,10 +7,10 @@ What are all these JavaScript buzz words?
 - jQuery: jQuery is a library (a bunch of files with code in them like yours) that turns ugly, annoying JavaScript into nice, elegant JavaScript.
 ```
 //ex:
- $('.my-class').hide();
+ $('#my-id').hide();
 //is the equivalent of:
-var myClass = document.getElementById('my-class');
-myClass.style.display = "none";
+var myId = document.getElementById('my-id');
+myId.style.display = "none";
 ```
 - Angular JS, Ember JS, Backbone JS: These are front-end MVC JavaScript
   frameworks. The point is to make the piles and piles of JavaScript you
@@ -183,20 +183,92 @@ instanceof
 
 isNaN
 
-Constructs
-- Statements
-	- Control Flow
-		- if
-		- if else
-		- ?
-		- if elseif else
-		- switch
-	- Loops
-		- for
-			- (var i = 0; i < something; i++)
-			- (banana in bunch)
-		- while
-			- INFINITE LOOPS!!
+## Constructs
+Now that we have all the main data stuff out of the way, let's do something with it!
+
+Doing something in programming means manipulating data and acting on the information. We'll evaluate __expressions__, make decisions and do things repeatedly with __statements__, and put pretty much all if that stuff in functions. Each of these topics is the core of what programming **does**, so far we've only really talked about the information that powers the fun stuff.
+
+### Statements
+
+#### Control Flow
+When we make decisions we use logic. Hopefully. The point of logic is to help us ensure what we are going makes sense and will behave like we want/expect so it's worth going through some logic.
+
+##### Logic and you
+Truth and falsehood are not always easy to determine in life but luckily computers are much more simple. In logic terms, statements are true or false. That's it. Period. It's convenient that we have two special values (remember Booleans?) ```true``` and ```false```. These are pretty handy but we'll need to deal with things whose truthiness or falsiness will need to be determined instead of made explicit with those two values. **Side Note**: I used **truthiness** and **falsiness** on purpose, some things are considered falsy but not the exact value of false; examples: the empty string ("") and the ```null``` object.
+
+Now let's start asking questions.
+
+##### The ```if``` statement
+
+The simplest question we can ask is if something is true or false. Then what? Well, ```if``` today is Monday, then we want to go home as early as possible. 
+
+In code:
+
+```
+if ( today == "Monday" ) {
+	console.log("go home early!");
+}
+```
+
+Notice we left it up to whether we can determine if today is in fact Monday: if it is, we have some very high hopes for getting home at a decent hour. But what if it isn't Monday? Shan't we have no alternative? Of course not! That's what we want to be able to deal with: multiple scenarios. So it might be natural to say, well, if it isn't Monday then we'll assume we're here for the long haul.
+
+```
+if ( today != "Monday" ) {
+	console.log("We'll be here forever.");
+}
+```
+
+But wait, that seems like a lot of code: and we seem to really be only dealing with a case where we want everything that doesn't meet our initial condition (the if today __is__ Monday bit) to be handled in the same way. Here comes the magnificent ```else```.
+
+```
+if ( today == "Monday" ) {
+	console.log("go home early!");
+} else {
+	console.log("We'll be here forever.");
+}
+```
+
+Notice we've captured the idea of what to do in a specific scenario and what to do if that specific scenario isn't what happens. This particular case of: ```if```-```else``` is very simple and indeed would be pretty hefy to type so of course this kind of thing happens all the time. That where out friend ```?``` comes in.
+
+```
+if ( today == "Monday" ) {
+	console.log("go home early!");
+} else {
+	console.log("We'll be here forever.");
+}
+
+// is the same as:
+
+today == "Monday" ? console.log("go home early!") : console.log("We'll be here forever.")
+```
+
+All we did was put our conditional expression in front of a question mark, then said what to do if it is true or false. Compare what you see here to the if statement above it.
+
+Just for posterity, here's the syntax of the if:
+
+```
+if ( conditionalExpression ) {
+	statement(s);                     // must be true for me to run
+} else { 
+	possiblyDifferentStatement(s);    // if not, I'm here to help!
+}
+```
+
+Notice the semi-colons don't need to be sprinkled everywhere in these things. That's super nice. The other fun thing is that we can really do as many things as we need to within these blocks (stuff between brackets is sometimes referred to as a block of code). That is, we can have more than one thing to do if something is true or otherwise. One other cool caveat is that in here we said that a ```conditionalExpression``` is expected between the parenthesis which means we can make even more complex logic as long as we get something true (or truthy) back. 
+
+##### Logical Or
+##### Logical And
+##### If - else if - else
+##### Switch
+
+#### Iterating
+- for
+	- (var i = 0; i < something; i++)
+	- (banana in bunch)
+- while
+	- INFINITE LOOPS!!
+
+
 - Expressions
 - Functions
 
