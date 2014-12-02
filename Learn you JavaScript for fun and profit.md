@@ -254,11 +254,30 @@ if ( conditionalExpression ) {
 }
 ```
 
-Notice the semi-colons don't need to be sprinkled everywhere in these things. That's super nice. The other fun thing is that we can really do as many things as we need to within these blocks (stuff between brackets is sometimes referred to as a block of code). That is, we can have more than one thing to do if something is true or otherwise. One other cool caveat is that in here we said that a ```conditionalExpression``` is expected between the parenthesis which means we can make even more complex logic as long as we get something true (or truthy) back. 
+Notice the semi-colons don't need to be sprinkled everywhere in these things. That's super nice. The other fun thing is that we can really do as many things as we need to within these blocks (stuff between brackets is sometimes referred to as a block of code). That is, we can have more than one thing to do if something is true or otherwise. One other cool caveat is that in here we said that a ```conditionalExpression``` is expected between the parenthesis which means we can make even more complex logic as long as we get something true (or truthy) back otherwise our else code block will run.
 
 ##### Logical Or
+
+Since we can decide two routes, what if we have more than one condition? What if we want to go home early on Monday or Friday? In logic, mathematics and computer science, when we say 'or' we are **not** saying "this or that" what we are saying is "this or that or both." The so-called 'inclusive' or. That means when we use the ```||``` operator to say "this or that" we'll need to consider the possibility of both this and that being true.
+
+```
+if ( today == "Monday" || today == "Friday" ) {
+	console.log('get home early!');
+} else {
+	console.log("sigh, we'll never leave...");
+}
+```
+
+What happens here is the JavaScript interpreter will first evaluate ```today == "Monday"```, if it is true, it won't bother checking the second condition because it doesn't change the fact that the logical or statement is true if and only if at least one of it's conditional statements is true, which one it doesn't matter but the computer will only check one if it can get away with it.
+
+In this case, we'd have some kind of strange error if today was both Monday and Friday, which leads us to...
+
 ##### Logical And
+
+Ah yes, ```and``` or ```&&``` as JavaScript expects it. 
 ##### If - else if - else
+
+##### Conditional Operator Summary Table
 ##### Switch
 
 #### Iterating
