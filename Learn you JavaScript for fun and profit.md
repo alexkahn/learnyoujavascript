@@ -228,7 +228,7 @@ if ( today == "Monday" ) {
 }
 ```
 
-Notice we've captured the idea of what to do in a specific scenario and what to do if that specific scenario isn't what happens. This particular case of: ```if```-```else``` is very simple and indeed would be pretty hefy to type so of course this kind of thing happens all the time. That where out friend ```?``` comes in.
+Notice we've captured the idea of what to do in a specific scenario and what to do if that specific scenario isn't what happens. This particular case of: ```if```-```else``` is very simple and indeed would be pretty hefty to type so of course this kind of thing happens all the time. That's where out friend ```?``` comes in.
 
 ```
 if ( today == "Monday" ) {
