@@ -274,7 +274,46 @@ In this case, we'd have some kind of strange error if today was both Monday and 
 
 ##### Logical And
 
-Ah yes, ```and``` or ```&&``` as JavaScript expects it. 
+Ah yes, ```and``` or ```&&``` as JavaScript expects it. Logical and means essentially the same thing it does in English, following the previous example we would write:
+
+```
+if ( today == "Monday" && weather == "rain" ) {
+	console.log("Boo! I don't want to work");
+} else {
+	console.log("At least it isn't Monday or Raining...");
+}
+```
+
+There are a couple subtle points in here, one is the use of the single-quote in the string (remember that?) the other, more pertinent, point is what that else statement says. In that sentence I just illustrated what information we have determined from the ```today``` and ```weather``` variables. Also, it is a demonstration of De Morgan's law (just put that into a search bar). We know that if an ```&&``` breaks (doesn't evaluate to true) then we can only say that at least one of the conditions is false, but it is also possible that both are false. If we wanted to show that symbolically, we might say:
+
+```
+If today == Monday && weather == raining  --> False
+  Then today != Monday or weather != raining // (or both)
+```
+
+If the two conditions being compared both evaluate to ```true``` then our script will execute the code in the succeeding block. The coolest part of the ```&&``` operator is that we can use 'short-circuit' logic to save ourselves. We know that if all of the statements connected by ```&&```s are true, then the entire statement is true but if at least one expression evaluates to false, we have a false conditional. Short-circuiting an ```&&``` will mean placing something in the first position of the execution of purpose. Consider the following:
+
+```
+var user = {
+	authenticated: function() {
+		return false;
+	},
+	complexOperation: function() {
+		return false;
+	}
+};
+```
+
+We have a JavaScript object called ```user``` that has two defined attributes (authenticated and complexOperation) that are functions. None of that should make too much sense yet but just tag along for a moment. We will often run in to situations where we need to make decisions on what to do when a user interacts with our application so we use conditionals and logic to make it happen. In the real world, the computations we execute will take time, energy and memory all of which means money. Our job is to cost as little as possible (reasonably) while doing everything we NEED to do. Back to our user object. Suppose we find ourselves in this situation:
+
+```
+if (user.authenticated() && user.complexOperation()) {
+	something.do();
+}
+```
+
+Intuitively, we want to know if the user is authenticated (is who they say they are) before we do anything. That makes total sense but there's a clever bit here: if the user isn't authenticated (the authenticated method returns false) then the JavaScript interpreter won't bother doing the complexOperation because it isn't possible for the ```&&``` to evaluate to true overall. Neat!
+
 ##### If - else if - else
 
 ##### Conditional Operator Summary Table
