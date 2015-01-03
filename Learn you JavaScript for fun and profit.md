@@ -19,7 +19,7 @@ myId.style.display = "none";
 
 ## Programming Principles
 
-Are you an engineer or an artist? Is there a difference at a certain point? Almost any field of study you can imagine has a subfield called "Computational <field>." So there are all these people out there who are Neuroscientists, Astronomers, Economists, Finance professionals etc. that program for fun and profit. So can you! There are many, many people out there that would love to tell you their opinions on how to code 'properly' and the like. Hey, I guess that's what I'm doing but really I'm just relaying the stuff I've seen so far that I've found useful. So here are some acronymns.
+Are you an engineer or an artist? Is there a difference at a certain point? Almost any field of study you can imagine has a subfield called "Computational [field]." So there are all these people out there who are Neuroscientists, Astronomers, Economists, Finance professionals etc. that program for fun and profit. So can you! There are many, many people out there that would love to tell you their opinions on how to code 'properly' and the like. Hey, I guess that's what I'm doing but really I'm just relaying the stuff I've seen so far that I've found useful. So here are some acronymns.
 
 - KISS: Keep it simple, stupid. Your goal as a programmer is to translate your idea into code simple. If the code you are writing is growing and growing but not making much progress in accomplishing your goal, you should consider using your delete key liberally. There are an infinite number of ways to code any one thing but only a few of them are any good. 
 
