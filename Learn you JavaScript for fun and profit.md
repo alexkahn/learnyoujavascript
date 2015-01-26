@@ -176,6 +176,18 @@ To JavaScript, there are only two real (see what I did there?) types of numbers:
 Thus we have illustrated the struggle of programming with math happening. Luckily, many of these problems are well documented but it is worth noting that not every number is computable, in fact a great deal of them are not. It has been shown (proved mathematically) that not all real numbers are computable by machines (they can't be represented internally) so that's just something to keep in mind. There are plenty of resources out there for doing math with JavaScript (like the Math javascript library) but we still have some number types to talk about.
 
 #### Integers
+Integers are just like their mathematical counterparts: positive and
+negative whole numbers. We can make a other primative types into
+integers with the ```parseInt()``` method like so:
+
+```
+var fortyTwo = "42";
+var int = parseInt(fortyTwo);
+console.log(typeof int);
+```
+
+JavaScript will attempt to make conversions for you based on what you
+give ```parseInt()``` but make sure you try it to see what happens.
 
 #### Floats
 #### NaN
