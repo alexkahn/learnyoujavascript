@@ -139,7 +139,7 @@ The first thing we'll do is as a string how many characters it has.
 "myfirststring".length
 ```
 
-I kind of lied, ```length``` isn't a method, technically it's a property which means no parenthesis when we ask for it. We could go through all the string methods one by one but that would certainly deserve a large amount of typing and someone (actually, a lot of people) have done this for us but I will show you how to use them.
+I kind of lied, ```length``` isn't a method. Technically it's a property which means no parenthesis when we ask for it. Properties aren't a behavior, it's like asking how tall a tree is or what the capacity of a barrel might be. Properties don't *change* anything. We could go through all the string methods one by one but that would certainly deserve a large amount of typing and someone (actually, a lot of people) have done this for us but I will show you how to use them.
 
 ```
 // Using a method, this one's for strings.
@@ -190,8 +190,12 @@ JavaScript will attempt to make conversions for you based on what you
 give ```parseInt()``` but make sure you try it to see what happens.
 
 #### Floats
-#### NaN
+Floating point numbers are representations of non-whole numbers.
 
+#### NaN
+Programming languages need things to represent certain concepts. In a
+moment we'll look at some other primitives that fill similar voids (you
+C++ folks know the pun at play here). 
 ### Boolean
 
 ### Undefined
