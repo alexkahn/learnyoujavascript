@@ -503,7 +503,7 @@ Since you're running these code examples yourself (right?!?) you know what kind 
 
 ### Arrays
 
-Arrays are a simple way to combine some of our primitive types into 'lists.' Arrays are created like so:
+Arrays are a simple way to combine our data into 'lists.' Arrays are created like so:
 
 ```js
 var a = [1,2,3,4];
@@ -513,7 +513,29 @@ var c = new Array(20);
 
 The first example is creating an array literal, the second using what's called a constructor (a way to make a new thing), the third is the constuctor with an argument with an integer literal to let the Array constructor know how long the array will be.
 
-Arrays can hold all of the primitive types, and any reference types.
+Arrays can hold all of the primitive types, and any reference types. This means we can construct arrays of arrays, a concept that allows us to build mathematical objects like matrices which can represent things like the pixels on a screen. We can make a mix of types like this:
+
+```js
+node> var myArray = [1, true, 'maybe', null, undefined, Date.now(), [0,1,1,0], {}, /^[0-9]+/g];
+undefined
+node> myArray
+[ 1,
+  true,
+  'maybe',
+  null,
+  undefined,
+  1424029294124,
+  [ 0, 1, 1, 0 ],
+  {},
+  /^[0-9]+/g ]
+```
+
+While it is nice to know that you can put anything into an array (this one holds all of the primitive and reference types), you'll have to keep track of where something is in the array. This we can do with some handy brackets:
+
+```js
+myArray[0];
+myArray[1];
+```
 
 ### Objects
 
