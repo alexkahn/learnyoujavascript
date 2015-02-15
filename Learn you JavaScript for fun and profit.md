@@ -195,12 +195,166 @@ Floating point numbers are representations of non-whole numbers.
 #### NaN
 Programming languages need things to represent certain concepts. In a
 moment we'll look at some other primitives that fill similar voids (you
-C++ folks know the pun at play here). 
+C++ folks know the pun at play here). There are times when we want to do
+operations on numbers but we can't be too confident that what we have
+is, in fact, a number. Instead of going through a lot of exposition,
+let's write a little code.
+
+```
+1 - 'hello';
+// NaN
+```
+
+That's all we're saying here. When we ask JavaScript to evaluate an expression that involves numbers and it can't very well turn one of the operands (stuff on either side of the binary operator) into a number, JavaScript very politely returns `NaN`. Primarily, well will not deal much with this character but there is a very useful method for checking values.
+
+```
+> isNaN([])
+false
+> isNaN({})
+true
+> isNaN(0)
+false
+> isNaN(true)
+false
+> isNaN(false)
+false
+> isNaN('happy')
+true
+> isNaN('127')
+false
+```
+
+Notice `isNaN()` returns `true` or `false`, it is a Boolean (more on this in a moment) function that only decides whether whatever is passed to it is a number. Notice also that what seems to not be a number can sometimes make `isNaN()` return false. These are well known 'quirks' in JavaScript so you may need to get a little creative if you have to check the type of something. One last remark is that you may notice that there is also some funny business with `true`, `false` and the string `'127'`. Another fun part of dynamic languages (languages where variables don't explicitly take one and only one type) is that sometimes the language will attempt to keep us safe by coercing a value from one type to another. Some examples:
+
+```
+> Number(true)
+1
+> Number(false)
+0
+> Number('127')
+127
+> Number('127.0')
+127
+> Number('127.5')
+127.5
+> Number([])
+0
+> Number({})
+NaN
+```
+
+Well, the cat's out of the bag: JavaScript can be an immensly
+frustrating language to work with at first, even though it is in many
+respects an 'easy' language. Thus we have illustrated the need for you
+to be creative with these imperfect tools. If you like, you can write
+your own language or try another one but if you want to work on the web,
+you'll start to appreciate the flaws and embrace the silliness of some
+parts. Now, on to next!
+
 ### Boolean
+The humble Boolean owes it's namesake to George Bool, a mathematician
+and inventer of (you'll never guess) Boolean algebra. What's that you
+say? This isn't a math tutorial, nice try though. Boolean values are our
+friends `true` and `false`. That's it. Every boolean ever made
+(correctly) has had one of those two values (but not both). Remember
+when we talked about truthiness and falsiness? None of that here, these
+values are the absolute truth and absolute false. They are great for
+answering yes/no questions so let's have an example:
+
+```
+while(true) {
+ console.log("Infinite loop? Yeah, we got that");
+}
+```
+
+This is a simple example of folly: we made a loop that never ends by never telling it how or when to stop. Hey, maybe that's not such a bad idea, it's the central building block of
+event-driven programming and, spoiler alert, that's what JavaScript is really all about. The central theme of JavaScript in the browser and running in Node.js: the event loop. So anyway, back to Booleans. Another example:
+
+```
+function isFortyTwo (number) {
+  if (!isNaN(Number(number)) && +number === 42) {
+    return true;
+  } else {
+    return false;
+  }
+}
+```
+
+Here we've defined a function that indicates whether or not it's
+argument is the number forty-two. So we can call it like this:
+
+```
+isFortyTwo(42);
+// true
+isFortyTwo(6*7);
+// true
+isFortyTwo('42');
+// true
+isFortyTwo('obviously we want something false');
+// false
+```
+
+Let's check out the secret to this sauce. First, we ask the question if
+`number`, after being converted to a number by `Number()`, isn't NaN,
+AND `number`, after being explicitly converted to a number using a `+` is `===` to
+the number 42, we'll send back the value `true`. In any other case,
+we'll send back false. This is really where booleans come in handy:
+
+```
+if (isFortyTwo(someVariable)) {
+  // do something here
+} else {
+  // do something else here
+}
+```
+
+Instead of all that nasty logic (which we might have to repeat in an
+application) we've made a function that does the work for us so we don't
+have to abuse the copy-paste feature or potentially make a mistake in
+one place but not be able to find it as easily.
 
 ### Undefined
+Trying to define `undefined` is likely the greatest of all ironies. So,
+let's do just that. Undefined is the primitive value that has no value,
+it is simply undefined. For instance, if we were to do something like
+this:
+
+```
+var something;
+console.log(something);
+// undefined
+
+function foo(x) { return x }
+foo();
+// undefined
+```
+
+The pattern here is that undefined denotes a type of 'missing' value. We
+can use `undefined` to make sure we aren't doing anything crazy like:
+
+```
+if ( something === undefined) {
+  // STOP NOW!
+}
+```
 
 ### Null
+Much like `undefined` we have another full 'non-value' value, `null`. We
+use null to act as a way of indicating that nothing is there,
+specifically, no object is there. To illustrate, let's look at some
+testing code:
+
+```
+describe('Some function I wrote', function() {
+  it("doesn't complain when everything is normal", function (done) {
+    request.get('http://www.github.com', function(err, response, body) {
+      expect(err).to.equal(null);
+    });
+  });
+});
+```
+
+Whoa! That's some super advanced looking stuff!
 
 ### Arrays
 - Ordered list of arbitrary data
