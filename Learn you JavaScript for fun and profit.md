@@ -7,7 +7,7 @@ What are all these words that people use?
 
 - jQuery: jQuery is a library (a bunch of files with code in them like yours) that turns ugly, annoying JavaScript into nice, elegant JavaScript.
 
-```
+```js
 // for example:
  $('#my-id').hide();
 //is the equivalent of:
@@ -38,12 +38,14 @@ Are you an engineer or an artist? Is there a difference at a certain point? Almo
 ## Data
 
 Here we want to start off with things that describe data. The world is all information and we can represent it in many ways but some ways are more sensible then others **but** HFC. To go a bit more in depth (use fancy words for ideas) we have two main types: Primative and Reference. Primative is to type as atom is to molecule. These are the simplest building blocks of the ways to translate real world things into code. Reference is a little more complicated. References are ways to "point" to something: not making a copy of it for yourself. To understand what we mean, let's look at some code.
-```
+
+```js
 var myFavoriteNumber = 42;
 ```
+
 Here we just made a variable (yes, just like Algebra) and it represents a little slot in our memory, this is what RAM (Random Access Memory) is, that **actually** holds on to the number 42 (10101 in binary for you machines out there). A reference type holds on to a copy of the **address** of that memory slot ```myFavoriteNumber``` represents. The coolest way of showing you what this means is with code:
 
-```
+```js
 var myFavoriteNumber = 42;
 var copy = myFavoriteNumber;
 
@@ -63,7 +65,7 @@ console.log(copy);
 
 Did you think we were going to change what was in myFavoriteNumber by changing what was in copy? Probably not but then there's this:
 
-```
+```js
 var somethingSuperImportant = {password: "secret-agent-man!"};
 var foo = somethingSuperImportant;
 console.log(somethingSuperImportant);
@@ -86,7 +88,7 @@ Now we're going to talk about the Primitive types one by one.
 ### Strings
 A string is just some stuff between quotes (single or double).
 
-```
+```js
 // String examples
 "a"
 "I am a string"
@@ -96,7 +98,7 @@ A string is just some stuff between quotes (single or double).
 
 As you can see, there is pretty much anything we can shove between some quotes and call it a string. These strings we just made don't stay anywhere (we didn't make variables for them to live in) and they are called "String Literals" because they are literally strings - literally. Here's the first gotcha: what happens when you mix up the quotes?
 
-```
+```js
 'This won't work';                              // ERROR!!
 "This will work or I ain't a good programmer";
 'She said and I quote "This is literally amazing"';
@@ -104,7 +106,7 @@ As you can see, there is pretty much anything we can shove between some quotes a
 
 The trick here is that we can't have an odd number of quotes that are supposed to surround our string. If we don't surround the string with one and only one type of quote character we will be told there is an error in our code by the all powerful interpreter: teller of your wrong. We did, however, illustrate the way you can still use them in a combination with each other as long as you are careful. There are some situations where we will need to get a bit fancier.
 
-```
+```js
 // Challenge: Make a sentence into a string
 // I'm sure the most important thing to remember is to "keep calm."
 // Solution:
@@ -134,14 +136,14 @@ Life wouldn't be complete without methods (functions) on strings that tell us mo
 
 The first thing we'll do is as a string how many characters it has.
 
-```
+```js
 "my first string".length
 "myfirststring".length
 ```
 
 I kind of lied, ```length``` isn't a method. Technically it's a property which means no parenthesis when we ask for it. Properties aren't a behavior, it's like asking how tall a tree is or what the capacity of a barrel might be. Properties don't *change* anything. We could go through all the string methods one by one but that would certainly deserve a large amount of typing and someone (actually, a lot of people) have done this for us but I will show you how to use them.
 
-```
+```js
 // Using a method, this one's for strings.
 var sparseString = '    I'm data surrounded by spaces!       ';
 var result = sparseString.trim();
@@ -168,7 +170,7 @@ We've seen numbers assigned to variables already but we haven't discussed what k
 
 To JavaScript, there are only two real (see what I did there?) types of numbers: integers and floats. Integers are exactly like I mentioned above: whole numbers that are or positive negative but floats are a little but different. A float is an approximation to a number that doesn't always work out the way you expect.
 
-```
+```js
 1.2347 - 1.2344 // should be: 0.0003
 // > 0.00029999999999996696
 ```
@@ -180,7 +182,7 @@ Integers are just like their mathematical counterparts: positive and
 negative whole numbers. We can make a other primative types into
 integers with the ```parseInt()``` method like so:
 
-```
+```js
 var fortyTwo = "42";
 var int = parseInt(fortyTwo);
 console.log(typeof int);
@@ -200,7 +202,7 @@ operations on numbers but we can't be too confident that what we have
 is, in fact, a number. Instead of going through a lot of exposition,
 let's write a little code.
 
-```
+```js
 1 - 'hello';
 // NaN
 ```
@@ -261,7 +263,7 @@ when we talked about truthiness and falsiness? None of that here, these
 values are the absolute truth and absolute false. They are great for
 answering yes/no questions so let's have an example:
 
-```
+```js
 while(true) {
  console.log("Infinite loop? Yeah, we got that");
 }
@@ -270,7 +272,7 @@ while(true) {
 This is a simple example of folly: we made a loop that never ends by never telling it how or when to stop. Hey, maybe that's not such a bad idea, it's the central building block of
 event-driven programming and, spoiler alert, that's what JavaScript is really all about. The central theme of JavaScript in the browser and running in Node.js: the event loop. So anyway, back to Booleans. Another example:
 
-```
+```js
 function isFortyTwo (number) {
   if (!isNaN(Number(number)) && +number === 42) {
     return true;
@@ -283,7 +285,7 @@ function isFortyTwo (number) {
 Here we've defined a function that indicates whether or not it's
 argument is the number forty-two. So we can call it like this:
 
-```
+```js
 isFortyTwo(42);
 // true
 isFortyTwo(6*7);
@@ -300,7 +302,7 @@ AND `number`, after being explicitly converted to a number using a `+` is `===` 
 the number 42, we'll send back the value `true`. In any other case,
 we'll send back false. This is really where booleans come in handy:
 
-```
+```js
 if (isFortyTwo(someVariable)) {
   // do something here
 } else {
@@ -319,7 +321,7 @@ let's do just that. Undefined is the primitive value that has no value,
 it is simply undefined. For instance, if we were to do something like
 this:
 
-```
+```js
 var something;
 console.log(something);
 // undefined
@@ -332,19 +334,19 @@ foo();
 The pattern here is that undefined denotes a type of 'missing' value. We
 can use `undefined` to make sure we aren't doing anything crazy like:
 
-```
+```js
 if ( something === undefined) {
   // STOP NOW!
 }
 ```
 
 ### Null
-Much like `undefined` we have another full 'non-value' value, `null`. We
+Much like `undefined` we have another 'non-value' value, `null`. We
 use null to act as a way of indicating that nothing is there,
 specifically, no object is there. To illustrate, let's look at some
 testing code:
 
-```
+```js
 describe('Requesting the GitHub home page', function() {
   it("doesn't complain when everything is normal", function (done) {
     request.get('http://www.github.com', function(err, response, body) {
@@ -367,9 +369,9 @@ type of thing we are dealing with is, we use the (unary) typeof
 operator like so:
 
 ```js
-var myString = 'learn you javascrapt';
+var myString = 'learn you javascript';
 typeof myString;
-// 'stirng'
+// 'string'
 ```
 
 All of the data types we've looked at so far have an answer to the
@@ -474,7 +476,7 @@ The simplest question we can ask is if something is true or false. Then what? We
 
 In code:
 
-```
+```js
 if ( today == "Monday" ) {
 	console.log("go home early!");
 }
@@ -482,7 +484,7 @@ if ( today == "Monday" ) {
 
 Notice we left it up to whether we can determine if today is in fact Monday: if it is, we have some very high hopes for getting home at a decent hour. But what if it isn't Monday? Shan't we have no alternative? Of course not! That's what we want to be able to deal with: multiple scenarios. So it might be natural to say, well, if it isn't Monday then we'll assume we're here for the long haul.
 
-```
+```js
 if ( today != "Monday" ) {
 	console.log("We'll be here forever.");
 }
@@ -490,7 +492,7 @@ if ( today != "Monday" ) {
 
 But wait, that seems like a lot of code: and we seem to really be only dealing with a case where we want everything that doesn't meet our initial condition (the if today __is__ Monday bit) to be handled in the same way. Here comes the magnificent ```else```.
 
-```
+```js
 if ( today == "Monday" ) {
 	console.log("go home early!");
 } else {
@@ -500,7 +502,7 @@ if ( today == "Monday" ) {
 
 Notice we've captured the idea of what to do in a specific scenario and what to do if that specific scenario isn't what happens. This particular case of: ```if```-```else``` is very simple and indeed would be pretty hefty to type so of course this kind of thing happens all the time. That's where out friend ```?``` comes in.
 
-```
+```js
 if ( today == "Monday" ) {
 	console.log("go home early!");
 } else {
@@ -516,7 +518,7 @@ All we did was put our conditional expression in front of a question mark, then 
 
 Just for posterity, here's the syntax of the if:
 
-```
+```js
 if ( conditionalExpression ) {
 	statement(s);                     // must be true for me to run
 } else {
@@ -530,7 +532,7 @@ Notice the semi-colons don't need to be sprinkled everywhere in these things. Th
 
 Since we can decide two routes, what if we have more than one condition? What if we want to go home early on Monday or Friday? In logic, mathematics and computer science, when we say 'or' we are **not** saying "this or that" what we are saying is "this or that or both." The so-called 'inclusive' or. That means when we use the ```||``` operator to say "this or that" we'll need to consider the possibility of both this and that being true.
 
-```
+```js
 if ( today == "Monday" || today == "Friday" ) {
 	console.log('get home early!');
 } else {
@@ -546,7 +548,7 @@ In this case, we'd have some kind of strange error if today was both Monday and 
 
 Ah yes, ```and``` or ```&&``` as JavaScript expects it. Logical and means essentially the same thing it does in English, following the previous example we would write:
 
-```
+```js
 if ( today == "Monday" && weather == "rain" ) {
 	console.log("Boo! I don't want to work");
 } else {
@@ -563,7 +565,7 @@ If today == Monday && weather == raining  --> False
 
 If the two conditions being compared both evaluate to ```true``` then our script will execute the code in the succeeding block. The coolest part of the ```&&``` operator is that we can use 'short-circuit' logic to save ourselves. We know that if all of the statements connected by ```&&```s are true, then the entire statement is true but if at least one expression evaluates to false, we have a false conditional. Short-circuiting an ```&&``` will mean placing something in the first position of the execution of purpose. Consider the following:
 
-```
+```js
 var user = {
 	authenticated: function() {
 		return false;
@@ -576,7 +578,7 @@ var user = {
 
 We have a JavaScript object called ```user``` that has two defined attributes (authenticated and complexOperation) that are functions. None of that should make too much sense yet but just tag along for a moment. We will often run in to situations where we need to make decisions on what to do when a user interacts with our application so we use conditionals and logic to make it happen. In the real world, the computations we execute will take time, energy and memory all of which means money. Our job is to cost as little as possible (reasonably) while doing everything we NEED to do. Back to our user object. Suppose we find ourselves in this situation:
 
-```
+```js
 if (user.authenticated() && user.complexOperation()) {
 	something.do();
 }
