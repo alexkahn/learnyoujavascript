@@ -503,15 +503,23 @@ Since you're running these code examples yourself (right?!?) you know what kind 
 
 ### Arrays
 
+Arrays are a simple way to combine some of our primitive types into 'lists.' Arrays are created like so:
+
+```js
+var a = [1,2,3,4];
+var b = new Array();
+var c = new Array(20);
+```
+
+The first example is creating an array literal, the second using what's called a constructor (a way to make a new thing), the third is the constuctor with an argument with an integer literal to let the Array constructor know how long the array will be.
+
+Arrays can hold all of the primitive types, and any reference types.
+
 ### Objects
 
 ### Dates
 
-typeof
-
 instanceof
-
-isNaN
 
 ## Constructs
 Now that we have all the main data stuff out of the way, let's do something with it!
@@ -536,7 +544,7 @@ In code:
 
 ```js
 if ( today == "Monday" ) {
-	console.log("go home early!");
+    console.log("go home early!");
 }
 ```
 
@@ -544,7 +552,7 @@ Notice we left it up to whether we can determine if today is in fact Monday: if 
 
 ```js
 if ( today != "Monday" ) {
-	console.log("We'll be here forever.");
+    console.log("We'll be here forever.");
 }
 ```
 
@@ -552,9 +560,9 @@ But wait, that seems like a lot of code: and we seem to really be only dealing w
 
 ```js
 if ( today == "Monday" ) {
-	console.log("go home early!");
+    console.log("go home early!");
 } else {
-	console.log("We'll be here forever.");
+    console.log("We'll be here forever.");
 }
 ```
 
@@ -562,9 +570,9 @@ Notice we've captured the idea of what to do in a specific scenario and what to 
 
 ```js
 if ( today == "Monday" ) {
-	console.log("go home early!");
+    console.log("go home early!");
 } else {
-	console.log("We'll be here forever.");
+    console.log("We'll be here forever.");
 }
 
 // is the same as:
@@ -578,9 +586,9 @@ Just for posterity, here's the syntax of the if:
 
 ```js
 if ( conditionalExpression ) {
-	statement(s);                     // must be true for me to run
+    statement(s);                     // must be true for me to run
 } else {
-	possiblyDifferentStatement(s);    // if not, I'm here to help!
+    possiblyDifferentStatement(s);    // if not, I'm here to help!
 }
 ```
 
@@ -592,9 +600,9 @@ Since we can decide two routes, what if we have more than one condition? What if
 
 ```js
 if ( today == "Monday" || today == "Friday" ) {
-	console.log('get home early!');
+    console.log('get home early!');
 } else {
-	console.log("sigh, we'll never leave...");
+    console.log("sigh, we'll never leave...");
 }
 ```
 
@@ -608,9 +616,9 @@ Ah yes, ```and``` or ```&&``` as JavaScript expects it. Logical and means essent
 
 ```js
 if ( today == "Monday" && weather == "rain" ) {
-	console.log("Boo! I don't want to work");
+    console.log("Boo! I don't want to work");
 } else {
-	console.log("At least it isn't Monday or Raining...");
+    console.log("At least it isn't Monday or Raining...");
 }
 ```
 
@@ -625,12 +633,12 @@ If the two conditions being compared both evaluate to ```true``` then our script
 
 ```js
 var user = {
-	authenticated: function() {
-		return false;
-	},
-	complexOperation: function() {
-		return false;
-	}
+    authenticated: function() {
+        return false;
+    },
+    complexOperation: function() {
+        return false;
+    }
 };
 ```
 
@@ -638,7 +646,7 @@ We have a JavaScript object called ```user``` that has two defined attributes (a
 
 ```js
 if (user.authenticated() && user.complexOperation()) {
-	something.do();
+    something.do();
 }
 ```
 
@@ -651,10 +659,10 @@ Intuitively, we want to know if the user is authenticated (is who they say they 
 
 #### Iterating
 - for
-	- (var i = 0; i < something; i++)
-	- (banana in bunch)
+    - (var i = 0; i < something; i++)
+    - (banana in bunch)
 - while
-	- INFINITE LOOPS!!
+    - INFINITE LOOPS!!
 
 
 - Expressions
