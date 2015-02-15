@@ -345,7 +345,7 @@ specifically, no object is there. To illustrate, let's look at some
 testing code:
 
 ```
-describe('Some function I wrote', function() {
+describe('Requesting the GitHub home page', function() {
   it("doesn't complain when everything is normal", function (done) {
     request.get('http://www.github.com', function(err, response, body) {
       expect(err).to.equal(null);
@@ -354,10 +354,94 @@ describe('Some function I wrote', function() {
 });
 ```
 
-Whoa! That's some super advanced looking stuff!
+Whoa! That's some super advanced looking stuff! This is an example of
+how one might test some JavaScript code using the concepts behind Test
+Driven Development or Behavior Driven Development. These techniques
+allow you to develop software based on things called 'specs' which are
+specific scenarios you want to test your software against. Tucked away
+in here is an important lesson about using null to test things. Say, for
+example, we got some data from our server in an AJAX request and we want
+to make sure we got our data and not an error. Note that this is a naive
+test but it will illustrate an important concept. To ask JavaScript what
+type of thing we are dealing with is, we use the (unary) typeof
+operator like so:
+
+```js
+var myString = 'learn you javascrapt';
+typeof myString;
+// 'stirng'
+```
+
+All of the data types we've looked at so far have an answer to the
+`typeof` question but `null` is special.
+
+```js
+var myVar = null;
+typeof myVar;
+// 'object'
+```
+
+Uh oh. That's not something we'd expect. Why doesn't it say `null`?
+Well, that's just how JavaScript is. This is a well known 'quirk' of
+JavaScript so if we need to know if something is `null` we should do it
+like this:
+
+```js
+var myObject = null;
+myObject === null;
+// true
+```
+
+Notice we use the triple equals instead of the double here.
+
+So we've covered all of the Primitive JavaScript types. For review, they
+are:
+
+* Strings
+* Numbers
+* Booleans
+* Undefined
+* Null
+
+Now we are going to venture into the second set of 'types' in JavaScript
+known as Reference Types that will expand our toolbox for representing
+real-world things.
+
+## Reference Types
+
+Alright, here we are at the beginning of the reference types. To work
+with these we need to look at what happens under the covers a bit. Let's
+look at the memory slots where we store variables.
+
+```
+-------------------------
+|      |       |        |
+|  42  | 'yes' |  true  |
+|      |       |        |
+-------------------------
+```
+
+Here you can imagine we are storing each of our values in a slot in the
+computer's memory. For Primitive Types, we store them directly in the
+slots but for Reference Types we will only hold a reference to the
+variable. A reference here means a pointer, a special thing whose value
+is an address to another place in memory. Note, you will not have to
+worry about this, JavaScript keeps track of this stuff for you, all you
+need to know is that the memory picture looks like this:
+
+```
+--------------------------------    -------------------------
+|         |         |          |    |        |       |      |
+|  myObj  | array1  | Date.now |    | object | array | date |
+| (Addr1) | (Addr2) | (Addr3)  |    |        |       |      |
+--------------------------------    -------------------------
+   |        |        |                  ^        ^      ^
+   ---------|--------|------------------|        |      |
+            |--------|---------------------------|      |
+                     |----------------------------------|
+```
 
 ### Arrays
-- Ordered list of arbitrary data
 
 ### Objects
 
@@ -435,7 +519,7 @@ Just for posterity, here's the syntax of the if:
 ```
 if ( conditionalExpression ) {
 	statement(s);                     // must be true for me to run
-} else { 
+} else {
 	possiblyDifferentStatement(s);    // if not, I'm here to help!
 }
 ```
