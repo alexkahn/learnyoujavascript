@@ -116,7 +116,8 @@ The trick here is that we can't have an odd number of quotes that are supposed t
 Well it's nice we can break strings up and add them together. That leads us into a quick, fun aside.
 
 **Aside**
-There are some really fancy words for things like ```+```, ```=```, ```<=```, and ```typeof```. They are known as operators. Operators have even more specific names depending on how many things they work on. You know about binary operators, you've been using them since grade school. Here's a binary operator:
+
+There are some really fancy words for things like `+`, `=`, `<=`, and `typeof`. They are known as operators. Operators have even more specific names depending on how many things they work on. You know about binary operators, you've been using them since grade school. Here's a binary operator:
 
 ```
 2 + 2
@@ -178,6 +179,7 @@ To JavaScript, there are only two real (see what I did there?) types of numbers:
 Thus we have illustrated the struggle of programming with math happening. Luckily, many of these problems are well documented but it is worth noting that not every number is computable, in fact a great deal of them are not. It has been shown (proved mathematically) that not all real numbers are computable by machines (they can't be represented internally) so that's just something to keep in mind. There are plenty of resources out there for doing math with JavaScript (like the Math javascript library) but we still have some number types to talk about.
 
 #### Integers
+
 Integers are just like their mathematical counterparts: positive and
 negative whole numbers. We can make a other primative types into
 integers with the ```parseInt()``` method like so:
@@ -186,15 +188,46 @@ integers with the ```parseInt()``` method like so:
 var fortyTwo = "42";
 var int = parseInt(fortyTwo);
 console.log(typeof int);
+// 'number'
 ```
 
 JavaScript will attempt to make conversions for you based on what you
 give ```parseInt()``` but make sure you try it to see what happens.
 
 #### Floats
-Floating point numbers are representations of non-whole numbers.
+
+Floating point numbers are representations of non-whole numbers. That is to say, we can use floats to represent values like `1/2` as `0.5`, similarly for every terminating rational number (unlike `1/3`). For numbers that don't terminate, we get things like this:
+
+```
+node> 1/3
+0.3333333333333333
+```
+
+Then there are the irrational numbers. This is where we have a talk about the representation of numbers and such. Honestly, this probably won't ever keep you awake at night so I'll just say that doing a bit of searching for `floating point numbers` will give you all the info you need to make sure you're doing things as correctly as possible. You can get famous math numbers like `π` like so:
+
+```js
+var pi = Math.PI
+console.log(pi);
+```
+
+Yay! Another oppotunity to talk programming style! One of the things that is popular for programmers to do is play around with the case of a variable to tell you what it is:
+
+```
+var DISCOUNT_RATE = 0.25;
+var someVariable = 'some string';
+var Class = function() {};
+```
+
+In JavaScript, if we make some variables that won't ever change in the program, we put them in all caps (you can finally use that caps lock key for something!). For most every other variable, we use camelCase. If we are doing some more advanced JavaScript, we might want to create a class so we'll give it a titlized name. If, for example, we have a class with more than one word in it's name, we'd do something like this:
+
+```js
+function MyClass () {}
+```
+
+Notice I've trickily been introducing functions and how you can define them, more on that later.
 
 #### NaN
+
 Programming languages need things to represent certain concepts. In a
 moment we'll look at some other primitives that fill similar voids (you
 C++ folks know the pun at play here). There are times when we want to do
@@ -210,19 +243,19 @@ let's write a little code.
 That's all we're saying here. When we ask JavaScript to evaluate an expression that involves numbers and it can't very well turn one of the operands (stuff on either side of the binary operator) into a number, JavaScript very politely returns `NaN`. Primarily, well will not deal much with this character but there is a very useful method for checking values.
 
 ```
-> isNaN([])
+node> isNaN([])
 false
-> isNaN({})
+node> isNaN({})
 true
-> isNaN(0)
+node> isNaN(0)
 false
-> isNaN(true)
+node> isNaN(true)
 false
-> isNaN(false)
+node> isNaN(false)
 false
-> isNaN('happy')
+node> isNaN('happy')
 true
-> isNaN('127')
+node> isNaN('127')
 false
 ```
 
@@ -416,11 +449,11 @@ with these we need to look at what happens under the covers a bit. Let's
 look at the memory slots where we store variables.
 
 ```
--------------------------
-|      |       |        |
-|  42  | 'yes' |  true  |
-|      |       |        |
--------------------------
+------------------------------
+|        |          |        |
+| favNum | myString | myBool |
+|  (42)  | ('yes')  | (true) |
+------------------------------
 ```
 
 Here you can imagine we are storing each of our values in a slot in the
@@ -432,6 +465,7 @@ worry about this, JavaScript keeps track of this stuff for you, all you
 need to know is that the memory picture looks like this:
 
 ```
+          variables               where our reference types live
 --------------------------------    -------------------------
 |         |         |          |    |        |       |      |
 |  myObj  | array1  | Date.now |    | object | array | date |
@@ -442,6 +476,30 @@ need to know is that the memory picture looks like this:
             |--------|---------------------------|      |
                      |----------------------------------|
 ```
+
+The reason I bring this up is to explain an important part of working with these things. Consider the following:
+
+```js
+var num = 42;
+var fortyTwo = 42;
+console.log(num)
+console.log(fortyTwo)
+
+num = 'string'
+console.log(num);
+console.log(fortyTwo);
+
+var myArray = [1,2,3];
+var copy = myArray;
+console.log(myArray);
+console.log(copy);
+
+myArray = ['a', 'b', 'c'];
+console.log(myArray);
+console.log(copy); // not quite what we think of a copy.
+```
+
+Since you're running these code examples yourself (right?!?) you know what kind of problem this presents. It means that when we alter the value of a reference type, any other reference to it will have the same changes like `myArray` and `copy` because we aren't making a copy of the object, we're making a copy of the address. As we explore the reference types, we'll talk about dealing with this.
 
 ### Arrays
 
