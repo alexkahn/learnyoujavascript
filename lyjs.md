@@ -299,7 +299,7 @@ node> isNaN('127')
 false
 ```
 
-Notice `isNaN()` returns `true` or `false`, it is a Boolean (more on this in a moment) function that only decides whether whatever is passed to it is a number. Notice also that what seems to not be a number can sometimes make `isNaN()` return false. These are well known 'quirks' in JavaScript so you may need to get a little creative if you have to check the type of something. One last remark is that you may notice that there is also some funny business with `true`, `false` and the string `'127'`. Another fun part of dynamic languages (languages where variables don't explicitly take one and only one type) is that sometimes the language will attempt to keep us safe by coercing a value from one type to another. Some examples:
+Notice `isNaN()` returns `true` or `false`, it is a Boolean (more on this in a moment) function that only decides whether whatever is passed to it is a number. Notice also that what seems to not be a number can sometimes make `isNaN()` return false. These are well known 'quirks' in JavaScript so you may need to get a little creative if you have to check the type of something. One last remark is that you may notice that there is also some funny business with `true`, `false` and the string `'127'`. Another fun part of dynamically-typed languages (languages where variables don't explicitly take one and only one type) is that sometimes the language will attempt to keep us safe by coercing a value from one type to another. Some examples:
 
 ```
 > Number(true)
