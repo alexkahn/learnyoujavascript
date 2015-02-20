@@ -109,11 +109,15 @@ The trick here is that we can't have an odd number of quotes that are supposed t
 ```js
 // Challenge: Make a sentence into a string
 // I'm sure the most important thing to remember is to "keep calm."
-// Solution:
+// Solution 1:
 "I'm sure the most important thing to remember is to " + '"keep calm."'
+// Solution 2:
+'I\'m sure the most important thing to remember is to "keep calm."'
+// Solution 3:
+"I'm sure the most important thing to remember is to \"keep calm.\""
 ```
 
-Well it's nice we can break strings up and add them together. That leads us into a quick, fun aside.
+First, let's note that we can use what are called _escaping_ to tell JavaScript we would like it to treat specific characters as part of the string, not things that tell it when it should stop regarding characters as part of a string (there's a common one called the new-line character: '\n' that makes it print a new line). Another fun thing in here is the idea that we can 'add' strings to each other; that leads us into a quick, fun aside.
 
 **Aside**
 
@@ -127,9 +131,10 @@ There!
 
 Here, the plus sign means to take two numbers and make them into one number. It is a __binary__ operator because it operates on two things at once. There are unary operators like the ```typeof``` operator that operates on one thing and tells you what type it is (like string or number). The most often used binary operator is by far the assignment operator, our old pal ```=```. In math, ```=``` means 'is equal or equivalent,' it is a relation between things like numbers and sets.
 
-In computer science and programming we often use the equal symbol to represent assignments and it means "hey, put the thing on the left hand side into the thing on the right hand side."
+In computer science and programming we often use the equal symbol to represent assignments and it means "hey, put the thing on the right hand side (usually some data) into memory and I will call it by the name on the left hand side."
 
-The take away here is that we will not use ```=``` for comparing variables or collections of variables.
+The take away here is that we will not use ```=``` in the normal, mathy
+way.
 
 **End Aside**
 
@@ -159,6 +164,41 @@ console.log('    I'm data surrounded by spaces!       '.trim());
 ```
 
 To learn more string methods, check out the very well done [String reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) made my the Mozilla Developers Network.
+
+One last thing before we move on. Let's make a string:
+
+```js
+var state = "Mississippi";
+```
+
+It is a very nice string, nothing crazy. Let's play Horror Movie and slice it up.
+
+```js
+state[0];
+// 'M'
+```
+
+Think of a string as a list of individual characters that are strung (please forgive the pun) together. When we have a construct like this (a list of things that is) we can use square brackets to get stuff out of it like so:
+
+```js
+state[8]
+// 'p'
+```
+
+This is something important how many languages choose to do things. They will start counting at 0. This is called Zero Indexing and just means that when we want to loop through something (we'll go over that in detail later) we'll probably have to add or subtract a one as the case may be. Since we're on the topic of indicies, let's learn another useful method.
+
+```js
+state.indexOf('p');
+// 8
+```
+
+The `indexOf()` method takes in a character and outputs where that element is in the string. There is also an analogous method for arrays (we'll talk about those later). For completeness, let's make more strings from stirings:
+
+```js
+state.substr(0,5);
+// Missi
+```
+
 
 ### Numbers
 
@@ -477,7 +517,7 @@ need to know is that the memory picture looks like this:
                      |----------------------------------|
 ```
 
-The reason I bring this up is to explain an important part of working with these things. Consider the following:
+The reason I bring this up is to explain an important part of working with these things. At the beginning of the data section, we explored this idea a bit.Consider the following:
 
 ```js
 var num = 42;
@@ -499,7 +539,34 @@ console.log(myArray);
 console.log(copy); // not quite what we think of a copy.
 ```
 
-Since you're running these code examples yourself (right?!?) you know what kind of problem this presents. It means that when we alter the value of a reference type, any other reference to it will have the same changes like `myArray` and `copy` because we aren't making a copy of the object, we're making a copy of the address. As we explore the reference types, we'll talk about dealing with this.
+Once again we've shown that making 'copies' of reference types isn't exactly straight forward. I bring this up again to talk a little bit more about what a reference type is.
+
+```js
+typeof new Array();
+// 'object'
+typeof new Object();
+// 'object'
+typeof new RegExp();
+// 'object'
+typeof new Date();
+// 'object'
+typeof new Function();
+// 'function'
+typeof new Error();
+// 'object'
+```
+
+It has been natural up to this point to talk about two classes of types but what we really have is a set of Primitive data types that can be combined to form new structures in the form of objects. All of our reference types are distinct objects that cannot equal anything but themselves. For example:
+
+```js
+var myArray = [1,2,3];
+var yourArray = [1,2,3];
+
+myArray === yourArray;
+// false
+```
+
+So now we have two problems with Reference Types: it isn't always straight forward how to copy them and it isn't easy to figure out if one is equal to another.
 
 ### Arrays
 
@@ -513,7 +580,7 @@ var c = new Array(20);
 
 The first example is creating an array literal, the second using what's called a constructor (a way to make a new thing), the third is the constuctor with an argument with an integer literal to let the Array constructor know how long the array will be.
 
-Arrays can hold all of the primitive types, and any reference types. This means we can construct arrays of arrays, a concept that allows us to build mathematical objects like matrices which can represent things like the pixels on a screen. We can make a mix of types like this:
+Arrays can hold all of the primitive types, and any reference types. This means we can construct arrays of arrays, a concept that allows us to build mathematical objects like matrices which can represent things like the pixels on a screen (think about what a screen really is: a bunch of x,y pairs). We can make a mix of types like this:
 
 ```js
 node> var myArray = [1, true, 'maybe', null, undefined, Date.now(), [0,1,1,0], {}, /^[0-9]+/g];
@@ -524,7 +591,6 @@ node> myArray
   'maybe',
   null,
   undefined,
-  1424029294124,
   [ 0, 1, 1, 0 ],
   {},
   /^[0-9]+/g ]
@@ -534,8 +600,33 @@ While it is nice to know that you can put anything into an array (this one holds
 
 ```js
 myArray[0];
+// 1
 myArray[1];
+// true
 ```
+
+This is a concept called indexing: we will use integers (or natural
+numbers if you're one of those people) to count the places that all of
+our elements live in with one _very_ important piece: INDEXING STARTS AT
+ZERO. Why all the caps? It's a big mistake that all beginners will make,
+even some pros. Let's take a look:
+
+```
+myArray
+-----------
+ 0 | 1
+ 1 | true
+ 2 | 'maybe'
+ 3 | null
+ 4 | undefined
+ 5 | [0,1,1,0]
+ 6 | {}
+ 7 | /^[0-9]+/g
+```
+
+As we can see, there isn't much to this but when we get to looping and
+iteration we'll see where this will trip us up (but hopefully we'll be
+diligent and it won't)
 
 ### Objects
 
