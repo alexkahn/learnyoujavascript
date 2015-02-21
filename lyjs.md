@@ -651,7 +651,7 @@ Now let's start asking questions.
 
 ##### The ```if``` statement
 
-The simplest question we can ask is if something is true or false. Then what? Well, ```if``` today is Monday, then we want to go home as early as possible. 
+The simplest question we can ask is if something is true or false. Then what? Well, ```if``` today is Monday, then we want to go home as early as possible.
 
 In code:
 
