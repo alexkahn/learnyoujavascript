@@ -1,1 +1,7 @@
 *.pptx
+.grunt
+node_modules
+_book
+*.epub
+*.mobi
+*.pdf
