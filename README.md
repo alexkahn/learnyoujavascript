@@ -1,7 +1,8 @@
 # Hello There!
-Welcome to my little repo of JavaScript learning materials. There isn't
-much here yet as I build up the basics but feel free to read to and
-contribute - just fork and make a pull request when you're ready.
+
+One day some people needed to learn JavaScript and weren't getting what they needed to do so. I decided I would jump in and help. They liked what they heard so I figured that I would attempt to write it down.
+
+## Contributing
 
 **Note** The tone and scope of this small project is to get people with
 no programming experience up to speed with JavaScript with a minimal
