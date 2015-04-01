@@ -1,10 +1,10 @@
 # Chapter the First
 ## Preliminary Ideas
 
-JavaScript is an implementation of ECMAScript, a standardized browser scripting language that powers all aspects of the WWW. What exactly does JavaScript do? It adds behavior to web pages, it allows you to do things asyncronously, it allows you to store things on the client, in short: JavaScript allows you to program the web.
+JavaScript is an implementation of ECMAScript, a standardized browser scripting language that powers all aspects of the WWW. What exactly does JavaScript do? It adds behavior to web pages, it allows you to do things asynchronously, it allows you to store things on the client, in short: JavaScript allows you to program the web.
 
 What are all these words that people use?
-- Node: a stand-alone (no browser) JavaScript interpreter (thing that runs your code) built out of Chrome. It's wicked fast and built to do things asyncronously.
+- Node: a stand-alone (no browser) JavaScript interpreter (thing that runs your code) built out of Chrome. It's wicked fast and built to do things asynchronously.
 
 - jQuery: jQuery is a library (a bunch of files with code in them like yours) that turns ugly, annoying JavaScript into nice, elegant JavaScript.
 
@@ -16,11 +16,11 @@ var myId = document.getElementById('my-id');
 myId.style.display = "none";
 ```
 
-- Angular JS, Ember JS, Backbone JS: These are front-end MVC JavaScript frameworks. The point is to make the piles and piles of JavaScript you write into fewer piles.
+- Angular JS, Ember JS, Backbone JS: These are front-end Model-View-Controller (MVC) JavaScript frameworks. The point is to make the piles and piles of JavaScript you write into fewer piles through organization and code reuse.
 
 ## Programming Principles
 
-Are you an engineer or an artist? Is there a difference at a certain point? Almost any field of study you can imagine has a subfield called "Computational [field]." So there are all these people out there who are Neuroscientists, Astronomers, Economists, Finance professionals etc. that program for fun and profit. So can you! There are many, many people out there that would love to tell you their opinions on how to code 'properly' and the like. Hey, I guess that's what I'm doing but really I'm just relaying the stuff I've seen so far that I've found useful. So here are some acronymns.
+Are you an engineer or an artist? Is there a difference at a certain point? Almost any field of study you can imagine has a sub-field called "Computational [field]." So there are all these people out there who are Neuroscientists, Astronomers, Economists, Finance professionals etc. that program for fun and profit: so can you! There are many, many people out there that would love to tell you their opinions on how to code "properly" and the like. Hey, I guess that's what I'm doing but really I'm just relaying the stuff I've seen so far that I've found useful. Here are some acronyms.
 
 - KISS: Keep it simple, stupid. Your goal as a programmer is to translate your idea into code simple. If the code you are writing is growing and growing but not making much progress in accomplishing your goal, you should consider using your delete key liberally. There are an infinite number of ways to code any one thing but only a few of them are any good. 
 
