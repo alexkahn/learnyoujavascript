@@ -22,7 +22,7 @@ myId.style.display = "none";
 
 Are you an engineer or an artist? Is there a difference at a certain point? Almost any field of study you can imagine has a sub-field called "Computational [field]." So there are all these people out there who are Neuroscientists, Astronomers, Economists, Finance professionals etc. that program for fun and profit: so can you! There are many, many people out there that would love to tell you their opinions on how to code "properly" and the like. Hey, I guess that's what I'm doing but really I'm just relaying the stuff I've seen so far that I've found useful. Here are some acronyms.
 
-- KISS: Keep it simple, stupid. Your goal as a programmer is to translate your idea into code simple. If the code you are writing is growing and growing but not making much progress in accomplishing your goal, you should consider using your delete key liberally. There are an infinite number of ways to code any one thing but only a few of them are any good. 
+- KISS: Keep it simple, stupid. Your goal as a programmer is to translate your idea into code simple. If the code you are writing is growing and growing but not making much progress in accomplishing your goal, you should consider using your delete key liberally. There are an infinite number of ways to code any one thing but only a few of them are any good.
 
 - DRY: Don't Repeat Yourself. If you find yourself typing essentially the same things over and over (or just more than once) then it would be a good opportunity to make a function or a method that encapsulates that procedure.
 
