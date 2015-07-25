@@ -1,4 +1,7 @@
-# Making Decisions
+Chapter the Third
+==================
+Making Decisions
+-----------------
 
 Now that we have all the main data stuff out of the way, let's do something with it!
 
