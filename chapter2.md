@@ -354,7 +354,7 @@ one place but not be able to find it as easily.
 
 ### Undefined
 Trying to define `undefined` is likely the greatest of all ironies. So,
-let's do just that. Undefined is the primitive value that has no value,
+let's do just that. Undefined is the value that has no value,
 it is simply undefined. For instance, if we were to do something like
 this:
 
@@ -377,6 +377,9 @@ if ( something === undefined) {
 }
 ```
 
+To be clear, `undefined` is neither primitive nor reference (object), it
+is in a category of it's own.
+
 ### Null
 Much like `undefined` we have another 'non-value' value, `null`. We
 use null to act as a way of indicating that nothing is there,
@@ -384,6 +387,8 @@ specifically, no object is there. To illustrate, let's look at some
 testing code:
 
 ```js
+var request = require('request');
+
 describe('Requesting the GitHub home page', function() {
   it("doesn't complain when everything is normal", function (done) {
     request.get('http://www.github.com', function(err, response, body) {
@@ -439,8 +444,12 @@ are:
 * Strings
 * Numbers
 * Booleans
-* Undefined
+
+Special object:
 * Null
+
+None of the above:
+* Undefined
 
 Now we are going to venture into the second set of 'types' in JavaScript
 known as Reference Types that will expand our toolbox for representing
@@ -596,4 +605,4 @@ diligent and it won't)
 
 ### Dates
 
-instanceof
+### instanceof
