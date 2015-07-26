@@ -133,6 +133,38 @@ if (user.authenticated() && user.complexOperation()) {
 
 Intuitively, we want to know if the user is authenticated (is who they say they are) before we do anything. That makes total sense but there's a clever bit here: if the user isn't authenticated (the authenticated method returns false) then the JavaScript interpreter won't bother doing the complexOperation because it isn't possible for the ```&&``` to evaluate to true overall. Neat!
 
+##### All these equals
+
+So there's this thing about JavaScript that is a little quirky. There are two different ways to ask if two things are equal. In some ways, this is a little intuitive: to us, this -> 1 looks an aweful lot like this -> '1'. To us, this is just one but to the machine these are completely different things but in JavaScript we can mimic this (but really, we shouldn't in most cases).
+
+Here's something simple:
+
+```js
+1 == '1'
+// true
+```
+
+That's not entirely unreasonable, but here's the other way:
+
+```js
+1 === '1'
+// false
+1 === 1
+// true
+```
+
+This is more correct as strings and numbers are in no way equal. In general, if you are comparing two things you will want to do this second option because it ensures you're looking at things that are the same primitive type as well as the same value. This is good because say we have something like the following:
+
+```js
+var creditCardNumber;
+if ( creditCardNumber == 7234567248932) {
+    refundCard(100000);
+}
+```
+
+This is a little crazy but you can see what might happen here. Suppose someone puts some kind of malicious code 
+Establishing the equality of other things like objects and arrays is a bit more complicated.
+
 ##### If - else if - else
 
 ##### Conditional Operator Summary Table
