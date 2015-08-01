@@ -37,7 +37,35 @@ for (var i = 0; i < 13; i+=2) {
 }
 ```
 
-The previous example's output is similar to the first, only we print the even numbers from 0 to 12.
+The previous example's output is similar to the first, only we print the even numbers from 0 to 12. So, in general, we can say that we can move the iterator by any increment or decrement as long as we don't run into a conflict of logic, that is, we will be able to exit the loop with certainty. Before we move on, let's make another very common example:
+
+```js
+for (var j = 10; j >= 0; j-- ) {
+    console.log(j);
+}
+```
+
+It's a countdown (hopefully not the final)!
+
+Okay, I mentioned a couple sentences ago that we always want to exit the loop with certainty. What does that mean? Loops are part control structure, part wild animal that we must respect. The worst thing in the world is making software that doesn't work (well, there are obviously better candidates for that but we're trying to make software for a living) and one of the simplest mistakes is implementing some kind of loop that never ends. For example:
+
+```js
+for (var oops = 0; oops >= 0; oops++) {
+    console.log(oops);
+}
+```
+
+I wouldn't suggest running that example (sorry if you did, but now you know why it's bad). The thing that's of significance here is the fact that we cannot logically ever make the check condition false and thus never exit the loop, ever. There are a lot of ways to make something like this happen but luckily, many of the iterations we deal with will be deterministic and therefore won't just unleash the loop. There are many cases (like numerical algorithms) where we will want to have a variable that represents the maximum number of iterations we want to go through before we exit. To illustrate a more complicated example (that won't be on the final) let's see what something like that would look like:
+
+```js
+var MAX_ITER = 200;
+
+for (var i = 0; Math.abs(current - previous) <= 0.00001 || i < MAX_ITER; i++) {
+    // some more complicated stuff
+}
+```
+
+So we have a really cool algorithm that is estimating some kind of value that we basically give two options: get within our tolerance level for accuracy of the estimation or we reach the maximum number of iterations before we just call it quits. Notice that we don't have to limit our loops to just exiting based on the value of the iterator, we can use other information to inform how we decide to stop looping. 
 
 ### Indexing
 
