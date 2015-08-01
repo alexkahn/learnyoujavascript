@@ -281,3 +281,6 @@ lengths:
 > useSwitch([[],[],[],[]]);
 'all done'
 ```
+
+Making decisions can be difficult but using the tools available can make that
+a much simpler process.

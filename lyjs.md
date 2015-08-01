@@ -7,6 +7,7 @@
 
 
 - Expressions
+
 ### Functions
 
 Functions are a way of holding on to a piece of logic. It is a way of
