@@ -1,7 +1,7 @@
+Chapter the fourth
+===================
 Do it again!
-============
-Iterating through collections
-------------------------------
+-------------
 
 ## `for`
 
