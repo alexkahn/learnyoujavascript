@@ -3,7 +3,7 @@ Chapter the fourth
 Do it again!
 -------------
 
-## `for`
+## The `for` statement
 
 The `for` statement encapsulates the process of how we iterate through
 some collection of things. In this chapter, we will discuss the how and
@@ -22,8 +22,22 @@ The for statement has three main parts. The first, `var i = 0` part, is
 the initialization step: we initialize the variable i to zero. It is
 worth noting here that arrays being counting at zero. This is a common
 construct amongst all programming languages (except R for statistical
-computations). The rational behind it is meaningless at this point, we
+computations where indexing begins at 1). The rational behind it is meaningless at this point, we
 must accept that indexes begin at zero.
+
+The second piece `i < 11` is the breaking condition. Once that boolean expression evaluates to `false` the loop will exit.
+
+The third and final piece is the thing to do when a cycle completes, usually it is used to increment or decrement the variable of we are iterating (`i`). Just for posterity, incrementing means increasing a value while decrementing means the opposite.
+
+Let's look at a series of examples to illustrate these pieces.
+
+```js
+for (var i = 0; i < 13; i+=2) {
+    console.log(i);
+}
+```
+
+The previous example's output is similar to the first, only we print the even numbers from 0 to 12.
 
 ### Indexing
 
